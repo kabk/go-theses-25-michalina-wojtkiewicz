@@ -1,0 +1,724 @@
+
+.image-container {
+position: relative;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  padding: 0;
+ margin: 0;
+}
+
+.owca{
+  width: 90vw;
+margin-left: 7rem;
+}
+.owca_dark {
+  display: none; /* Hide by default */
+  width: 90vw;
+  margin-left: 7rem;
+}
+body.dark-mode .owca_dark {
+  display: block; /* Show in dark mode */
+}
+
+body.dark-mode .owca {
+  display: none; /* Hide regular image in dark mode */
+}
+
+.header {
+  position: absolute;
+  font-size: 60pt;
+  line-height: 5rem;
+  font-family: 'cmunobi';
+  text-align: center;
+  top: 28rem;
+  left: 2rem;
+ color: #000000;
+ z-index: 1;
+}
+.w-1{
+  left: 1rem;
+}
+.w-2{
+  word-spacing: -.2ch;
+}
+body.dark-mode .header {
+  position: absolute;
+  font-family:'cmunobi';
+  text-align: center;
+  color: #d0d0d0;
+}
+body.middle-mode .header {
+  position: absolute;
+  font-family: 'cmunobi';
+  text-align: center;
+  color: #fffce1;
+}
+
+
+.nav-container {
+  flex: 0.5; 
+}
+
+/* Text column */
+.text-container {
+  flex: 2; 
+  text-align: left;
+    line-height: 1.5;
+    text-align: center;
+    will-change: color;
+  font-family: 'karrik';
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Image column */
+.images {
+  flex: 1; /* Takes up more space than the empty column */
+  display: flex;
+  flex-direction: column; /* Stack the items vertically */
+  padding-right: 5rem;
+}
+
+@font-face {
+  font-family: 'cmunobi';
+  src: url('../css/fonts/cmunobi.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'karrik';
+  src: url('../css/fonts/Karrik-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'cmunobx';
+  src: url('../css/fonts/cmunobx.woff') format('woff');
+}
+
+body {
+  background-color: rgb(255, 252, 206);
+  will-change: background-color, color;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  padding: 0;
+  margin: 0;
+}
+
+body.dark-mode {
+  background-color: #121212;
+}
+
+body.middle-mode {
+  background-color: #bebdb1;
+}
+
+
+body.dark-mode em,
+body.dark-mode i,
+body.dark-mode a,
+body.dark-mode .bottom-nav,
+body.dark-mode .bottom-nav li a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+body.middle-mode .bottom-nav,
+body.middle-mode .bottom-nav li a,
+body.middle-mode em,
+body.middle-mode h2,
+body.middle-mode p,
+body.middle-mode i,
+body.middle-mode a,
+body.middle-mode .header {
+  color: rgb(255, 252, 206);
+  text-decoration: none;
+}
+
+.blur-effect {
+  filter: blur(10px); 
+}
+
+p {
+  font-size: 16pt;
+  text-align: justify;
+  font-family: 'Karrik';
+  hyphens: auto;
+  color: #000000;
+ 
+}
+
+
+.subheader> h2 {
+  position: relative;
+  padding-top: 5rem;
+  font-family: 'cmunobi';
+  font-weight: normal;
+  color: rgb(0, 0, 0);
+  font-size: 25pt;
+  text-align: center;
+  padding-bottom: -1rem;  
+}
+
+a, em, i {
+  text-decoration: none;
+  color: #000000;
+}
+
+.bottom-nav {
+  position: sticky; /* Keeps the navbar fixed at the bottom */
+  bottom: 0; /* Aligns it at the bottom of the viewport */
+  left: 0; /* Ensures it starts from the left of the viewport */
+  right: 0; /* Ensures it stretches to the right of the viewport */
+  width: 100%; /* Make it span the full width of the page */
+  height: 2rem; /* Adjust height to make it the desired thickness */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  font-family: 'karrik';
+  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+  transition: top 0.3s ease; /* Smooth transition for top positioning */
+  box-shadow:
+  0 0 40px 20px #fff,
+  0 0 80px 40px rgba(255, 255, 255, 0.8),
+  0 0 120px 70px rgba(255, 255, 255, 0.6);
+}
+
+
+.bottom-nav.sticky {
+  top: 0; /* Stick to the top of the page */
+  bottom: unset; /* Remove bottom positioning */
+}
+
+/* Styling for bottom-nav items */
+.bottom-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+
+.bottom-nav li {
+  margin: 0 20px;
+}
+
+.bottom-nav li a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 12pt;
+  color: white;
+}
+
+.bottom-nav li a:hover,
+.bottom-nav li a:active {
+  filter: blur(3px);
+}
+
+.bottom-nav li a:active {
+  filter: blur(4px);
+}
+
+.dark-mode-toggle {
+  position: fixed;
+  bottom: 5rem;
+ left: 1rem;
+  background-color: transparent;
+  border: none;
+  width: 10rem;
+  height: auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: none;
+  z-index: 1;
+}
+
+.dark-mode-toggle img {
+  position: absolute;
+  z-index: 1;
+  transition: filter 0.3s ease; 
+}
+
+.dark-mode-toggle:hover img,
+.dark-mode-toggle:active img {
+  filter: blur(5px);
+}
+
+
+.light-mode-img, .middle-mode-img, .dark-mode-img {
+  opacity: 0;
+  position: absolute; /* Ensures only one image takes up space */
+}
+
+.light-mode-img {
+  opacity: 1;
+}
+
+body.middle-mode .middle-mode-img {
+  opacity: 1;
+}
+
+body.middle-mode .light-mode-img,
+body.middle-mode .dark-mode-img {
+  opacity: 0;
+}
+
+body.dark-mode .dark-mode-img {
+  opacity: 1;
+}
+
+body.dark-mode .light-mode-img,
+body.dark-mode .middle-mode-img {
+  opacity: 0;
+}
+
+
+/* Basic styles for the columns container */
+.content-wrapper {
+  display: flex;
+}
+
+body.dark-mode p,
+body.dark-mode em,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode a {
+  color:rgb(207, 207, 207);
+}
+
+body.dark-mode .bottom-nav {
+  background-color: #000000; /* Dark background color */
+}
+
+.littlefoot {
+  -webkit-text-fill-color: initial !important;
+  --button-active-background-color: #000000;
+  --button-background-color: black;
+  --popover-border-radius:	2rem;
+  --popover-text-color: rgb(255, 255, 255);	
+  --popover-border: none;
+  --popover-shadow: none;
+  --popover-background-color: rgb(0, 0, 0);
+  --popover-horizontal-padding: 1.5rem;
+  --popover-vertical-padding:	0.1rem;
+  --popover-tooltip-size:	0.1rem;
+}
+
+body.dark-mode .littlefoot {
+  --button-active-background-color:  rgb(212, 212, 212);
+  --button-background-color:  rgb(160, 160, 160);
+  --button-active-text-color: black;
+  --popover-border: none;
+  --popover-shadow: none;
+  --popover-background-color: rgb(208, 208, 208);
+  --popover-text-color: rgb(0, 0, 0);	
+  --popover-horizontal-padding: 1.5rem;
+  --popover-vertical-padding:	0.1rem;
+}
+
+body.middle-mode .littlefoot {
+  --button-active-background-color:  rgb(173, 173, 165);
+  --button-background-color: rgb(167, 168, 159);
+  --button-active-text-color: rgb(136, 136, 136);
+  --popover-border: none;
+  --popover-shadow: none;
+  --popover-background-color: rgb(149, 149, 149);
+  --popover-text-color: rgb(0, 0, 0);	
+  --popover-horizontal-padding: 1.5rem;
+  --popover-vertical-padding:	0.1rem;
+}
+.littlefoot em,
+.littlefoot p,
+.littlefoot a{
+  font-size: 9pt;
+  font-family: 'karrik';
+  color: #ffffff;
+}
+
+body.dark-mode .littlefoot em,
+body.dark-mode .littlefoot p,
+body.dark-mode .littlefoot a{
+  font-size: 9pt;
+  font-family: 'karrik';
+  color: #000000;
+}
+
+/* Sidenotes, margin notes, figures, captions */
+img {
+  max-width: 100%;
+}
+
+.sidenote,
+.marginnote {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center image and caption */
+  text-align: center;
+  float: right;
+  clear: right;
+  margin-right: -55%;
+  width: 50%;
+  height: auto;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+  /* font-size: 1.1rem; */
+  font-size: 1rem;
+  /* line-height: 1.3; */
+  vertical-align: baseline;
+  position: relative;
+}
+
+input.margin-toggle {
+  display: none;
+}
+
+label.margin-toggle:not(.sidenote-number) {
+  display: none;
+}
+
+body.dark-mode .marginnote img {
+  max-width: 100%;
+  height: auto;
+  filter:grayscale(100%); /* Darker by default in dark mode */
+  transition: filter 0.3s ease-in-out;
+}
+.owca_mobile{
+  display: none;
+  }
+
+body.dark-mode .marginnote img:hover {
+  filter:grayscale(0%) ;/* Full brightness on hover in dark mode */
+}
+
+body.middle-mode .marginnote img {
+  max-width: 100%;
+  height: auto;
+  filter: sepia(100%) brightness(90%);/* Darker by default in dark mode */
+  transition: filter 0.3s ease-in-out;
+}
+
+body.middle-mode .marginnote img:hover {
+  filter: sepia(0) brightness(100%);
+   /* Full brightness on hover in dark mode */
+}
+
+.note-caption{
+color: rgb(138, 138, 138);
+padding-top: 0.5rem;
+line-height: 1rem;
+text-align: left;
+margin-left: 0;
+hyphens: auto;
+margin-bottom: 2rem;
+}
+
+.owca_mobile_dark{
+  display: none;
+}
+.biblio p{
+  font-family: 'cmunobx';
+  font-size: 9pt;
+  text-align: left;
+    text-indent: -2em;  /* Moves first line left */
+    padding-left: 2em;  /* Pushes remaining lines right */
+  
+}
+.biblio em, i{
+  font-family: 'cmunobi';
+}
+.acn p{
+margin-top: -3rem;
+margin-bottom: 5rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  align-items: left;
+  text-align: center;
+  color: rgb(100, 100, 100);
+  font-size: 12pt;
+}
+.dark-mode-toggle {
+  opacity: 0; /* Hidden initially */
+  z-index: 9999;
+}
+
+.bottom-nav.sticky ~ .dark-mode-toggle {
+  opacity: 1; /* Make it visible when navbar is sticky */
+}
+
+
+@media (max-width: 779px) {
+
+  body {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+.image-container {
+  position: relative;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    padding: 0;
+   margin: 0;
+  }
+  
+.text-container {
+  padding: 1.5rem;
+  flex: 2.5;
+  width: 90%;
+}
+
+img {
+  max-width: 100%;
+  width: 100vw;
+}
+
+p{
+  font-size: 10pt;
+  text-align: justify;
+  word-spacing: normal;  /* Reset spacing */
+  letter-spacing: normal; /* Reset spacing */
+  word-break: normal; /* Prevent breaking words unnecessarily */
+  overflow-wrap: normal;
+}
+
+.subheader> h2{
+  font-size: 18pt;
+  text-align: center;
+  padding-top: 4rem;
+}
+  body.dark-mode .owca_mobile_dark{
+  display: block;
+  width: 100vw; /* Full width of the viewport */
+  height: 100vh; /* Full height of the viewport */
+  overflow: hidden; /* Hide overflowing parts */
+  position: relative;
+  width: 100%; /* Fill the container width */
+  height: 100%; /* Fill the container height */
+  object-fit: cover; /* Ensures no stretching, crops instead */
+  object-position: left center;
+  
+  }
+  body.dark-mode .owca_dark{
+    display: none;
+    }
+    body.dark-mode .owca_mobile{
+      display: none;
+      }
+
+.header{
+  font-size: 55pt;
+  text-align: center;
+  margin-top: -12rem;
+  mix-blend-mode:difference;
+  padding: 0;
+  margin-right: 1rem;
+  line-height: 4.5rem;
+  color: #fffce1;
+}
+body.middle-mode .header{
+  font-size: 55pt;
+  text-align: center;
+  margin-top: -12rem;
+  mix-blend-mode:difference;
+  padding: 0;
+  margin-right: 1rem;
+  line-height: 4.5rem;
+  color: #fffcdd;
+}
+body.dark-mode .header{
+  font-size: 55pt;
+  text-align: center;
+  margin-top: -12rem;
+  mix-blend-mode:difference;
+  padding: 0;
+  margin-right: 1rem;
+  line-height: 4.5rem;
+  color: #ffffff;
+}
+
+
+  .nav-container {
+    display: none;
+  }
+  
+
+  .sidenote,
+  .marginnote {
+    float: left;
+    clear: both;
+    margin-right: 0%;
+    width: 100%;
+    height: auto;
+    margin-top: 0.3rem;
+    margin-bottom: 0;
+    /* font-size: 1.1rem; */
+    font-size: 1rem;
+    /* line-height: 1.3; */
+    vertical-align: baseline;
+    position: relative;
+  }
+
+  .dark-mode-toggle {
+  width: 15%;
+  padding: 1rem;
+  align-self: right;
+  margin-left: 22.5rem;
+  margin-bottom: -3rem;
+  z-index: 1;
+  }
+  
+  .image-container {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    }
+    
+    .owca{
+      margin: 0;
+      padding: 0;
+    display: none;
+    }
+
+    .owca_dark {
+      margin: 0;
+      padding: 0;
+      display: none; /* Hide by default */
+    }
+    .note-caption{
+      font-size: 9pt;
+      color: rgb(138, 138, 138);
+      padding-top: 0.5rem;
+      line-height: 1rem;
+      text-align: left;
+      margin-left: 0;
+      hyphens: auto;
+      margin-bottom: 2rem;
+      }
+      .owca_mobile {
+        display: block;
+        width: 100vw; /* Full width of the viewport */
+        height: 100vh; /* Full height of the viewport */
+        overflow: hidden; /* Hide overflowing parts */
+        position: relative;
+        width: 100%; /* Fill the container width */
+        height: 100%; /* Fill the container height */
+        object-fit: cover; /* Ensures no stretching, crops instead */
+        object-position: left center;
+      }
+ 
+      body.middle-mode .littlefoot {
+        --button-active-background-color:  rgb(173, 173, 165);
+        --button-background-color: rgb(167, 168, 159);
+        --button-active-text-color: rgb(136, 136, 136);
+        --popover-border: none;
+        --popover-shadow: none;
+        --button-height: 0.7rem;
+        --popover-background-color: rgb(149, 149, 149);
+        --popover-text-color: rgb(0, 0, 0);	
+        --popover-horizontal-padding: 1rem;
+        --popover-vertical-padding:	0.01rem;
+        z-index: 999;
+      }
+      
+      body.dark-mode .littlefoot {
+        --popover-border: none;
+        --popover-shadow: none;
+        --button-height: 0.7rem;
+        z-index: 999;
+      }
+     .littlefoot {
+        --popover-border: none;
+        --popover-shadow: none;
+        --button-height: 0.7rem;
+        z-index: 999;
+      }
+
+.littlefoot em,
+.littlefoot p,
+.littlefoot a{
+  font-size: 8pt;
+  font-family: 'karrik';
+  text-align: left;
+}
+
+  /* Bottom Navigation Container */
+.bottom-nav {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent wrapping of nav items */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  width: 100%; /* Ensure it takes up the full width */
+  position: sticky;
+  bottom: 0;
+  background-color: black;
+  height: 2.3rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  z-index: 9999;
+  scrollbar-color: none;
+}
+
+/* List inside the bottom nav */
+.bottom-nav ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  flex-wrap: nowrap;
+ /* Make sure list items do not wrap */
+}
+
+/* Bottom Navigation Items */
+.bottom-nav li {
+  margin: 0 15px; /* Adjust the spacing between nav items */
+}
+
+/* Navigation links style */
+.bottom-nav li a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 12pt;
+  color: white;
+  font-size: 10pt;
+}
+
+/* Hover/Active state of links */
+.bottom-nav li a:hover,
+.bottom-nav li a:active {
+  filter: blur(3px);
+}
+.bottom-nav {
+  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none;  /* Hide scrollbar in Firefox */
+}
+.biblio p{
+  font-family: 'cmunobx';
+  font-size: 9pt;
+  text-align: left;
+  
+}
+.biblio em, i{
+  font-family: 'cmunobi';
+}
+.acn p{
+padding-left: 1rem;
+padding-right: 1rem;
+margin-top: -1rem;
+margin-bottom: 2rem;
+text-align: center;
+  color: rgb(100, 100, 100);
+  font-size: 8pt;
+
+
+}
+}
+
