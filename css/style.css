@@ -6,6 +6,7 @@ position: relative;
   display: block;
   padding: 0;
  margin: 0;
+ overflow-x: hidden;
 }
 
 .owca{
@@ -16,13 +17,16 @@ margin-left: 7rem;
   display: none; /* Hide by default */
   width: 90vw;
   margin-left: 7rem;
+  overflow-x: hidden;
 }
 body.dark-mode .owca_dark {
   display: block; /* Show in dark mode */
+  overflow-x: hidden;
 }
 
 body.dark-mode .owca {
   display: none; /* Hide regular image in dark mode */
+  overflow-x: hidden;
 }
 
 .header {
@@ -452,16 +456,20 @@ margin-bottom: 5rem;
 
 @media (max-width: 779px) {
 
+  html {
+    scroll-behavior: smooth;
+  }
+  
   body {
     width: 100vw;
+    height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-x: hidden;
   }
   
 .image-container {
   position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: block;
     padding: 0;
@@ -470,8 +478,11 @@ margin-bottom: 5rem;
   
 .text-container {
   padding: 1.5rem;
-  flex: 2.5;
-  width: 90%;
+  flex: 100;
+  overflow: auto;
+}
+.images{
+display: none;
 }
 
 img {
@@ -482,12 +493,7 @@ img {
 p{
   font-size: 10pt;
   text-align: justify;
-  word-spacing: normal;  /* Reset spacing */
-  letter-spacing: normal; /* Reset spacing */
-  word-break: normal; /* Prevent breaking words unnecessarily */
-  overflow-wrap: normal;
 }
-
 .subheader> h2{
   font-size: 18pt;
   text-align: center;
@@ -502,8 +508,7 @@ p{
   width: 100%; /* Fill the container width */
   height: 100%; /* Fill the container height */
   object-fit: cover; /* Ensures no stretching, crops instead */
-  object-position: left center;
-  
+  object-position: center left;
   }
   body.dark-mode .owca_dark{
     display: none;
@@ -513,41 +518,35 @@ p{
       }
 
 .header{
-  font-size: 55pt;
+  font-size: 50pt;
+  position: absolute;
   text-align: center;
-  margin-top: -12rem;
-  mix-blend-mode:difference;
-  padding: 0;
+  margin-top: -11rem;
+  mix-blend-mode: difference;
   margin-right: 1rem;
   line-height: 4.5rem;
   color: #fffce1;
+
 }
 body.middle-mode .header{
-  font-size: 55pt;
   text-align: center;
-  margin-top: -12rem;
-  mix-blend-mode:difference;
-  padding: 0;
+  margin-top: -11rem;
+  mix-blend-mode: difference;
   margin-right: 1rem;
   line-height: 4.5rem;
   color: #fffcdd;
 }
 body.dark-mode .header{
-  font-size: 55pt;
   text-align: center;
-  margin-top: -12rem;
-  mix-blend-mode:difference;
-  padding: 0;
+  margin-top: -11rem;
+  mix-blend-mode: difference;
   margin-right: 1rem;
   line-height: 4.5rem;
   color: #ffffff;
 }
-
-
   .nav-container {
     display: none;
   }
-  
 
   .sidenote,
   .marginnote {
@@ -565,15 +564,6 @@ body.dark-mode .header{
     position: relative;
   }
 
-  .dark-mode-toggle {
-  width: 15%;
-  padding: 1rem;
-  align-self: right;
-  margin-left: 22.5rem;
-  margin-bottom: -3rem;
-  z-index: 1;
-  }
-  
   .image-container {
     position: relative;
     width: 100%;
@@ -649,57 +639,60 @@ body.dark-mode .header{
   text-align: left;
 }
 
-  /* Bottom Navigation Container */
 .bottom-nav {
+  position: fixed;/* Keeps the navbar fixed at the bottom */
+  overflow: auto;
+  bottom: 0; /* Aligns it at the bottom of the viewport */
+  left: 0; /* Ensures it starts from the left of the viewport */
+  right: 0; /* Ensures it stretches to the right of the viewport */
+  width: 100%; /* Make it span the full width of the page */
+  height: 2rem; /* Adjust height to make it the desired thickness */
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent wrapping of nav items */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  width: 100%; /* Ensure it takes up the full width */
-  position: sticky;
-  bottom: 0;
-  background-color: black;
-  height: 2.3rem;
   justify-content: center;
   align-items: center;
-  padding: 0;
   z-index: 9999;
+  font-family: 'karrik';
+  color: #ffffff;
+  background-color: rgb(0, 0, 0);
+  transition: top 0.3s ease; /* Smooth transition for top positioning */
+  box-shadow:
+  0 0 40px 20px #fff,
+  0 0 80px 40px rgba(255, 255, 255, 0.8),
+  0 0 120px 70px rgba(255, 255, 255, 0.6);
   scrollbar-color: none;
+  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer and Edge */
+  scrollbar-width: none;  /* Hide scrollbar in Firefox */
+  transition: top 0.5s ease-in-out; /* Smooth transition */
 }
 
-/* List inside the bottom nav */
+.bottom-nav.sticky {
+  top: 0; /* Stick to the top of the page */
+  bottom: unset; /* Remove bottom positioning */
+}
+
+/* Styling for bottom-nav items */
 .bottom-nav ul {
-  display: flex;
-  padding: 0;
-  margin: 0;
   list-style: none;
-  flex-wrap: nowrap;
- /* Make sure list items do not wrap */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
 }
 
-/* Bottom Navigation Items */
 .bottom-nav li {
-  margin: 0 15px; /* Adjust the spacing between nav items */
+  margin: 0 20px;
 }
 
-/* Navigation links style */
 .bottom-nav li a {
   color: inherit;
   text-decoration: none;
   font-size: 12pt;
   color: white;
-  font-size: 10pt;
 }
 
-/* Hover/Active state of links */
-.bottom-nav li a:hover,
-.bottom-nav li a:active {
-  filter: blur(3px);
-}
-.bottom-nav {
-  -ms-overflow-style: none;  /* Hide scrollbar in Internet Explorer and Edge */
-  scrollbar-width: none;  /* Hide scrollbar in Firefox */
-}
 .biblio p{
   font-family: 'cmunobx';
   font-size: 9pt;
@@ -717,8 +710,10 @@ margin-bottom: 2rem;
 text-align: center;
   color: rgb(100, 100, 100);
   font-size: 8pt;
+}
 
-
+.dark-mode-toggle{
+  display: none;
 }
 }
 
