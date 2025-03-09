@@ -2,7 +2,7 @@
 .image-container {
 position: relative;
   width: 100%;
-  height: 100vh;
+  height: 18vh;
   display: block;
   padding: 0;
  margin: 0;
@@ -13,39 +13,19 @@ position: relative;
   width: 90vw;
 margin-left: 7rem;
 }
-.owca_dark {
-  display: none; /* Hide by default */
-  width: 90vw;
-  margin-left: 7rem;
-  overflow-x: hidden;
-}
-body.dark-mode .owca_dark {
-  display: block; /* Show in dark mode */
-  overflow-x: hidden;
-}
-
-body.dark-mode .owca {
-  display: none; /* Hide regular image in dark mode */
-  overflow-x: hidden;
-}
 
 .header {
   position: absolute;
-  font-size: 60pt;
-  line-height: 5rem;
+  font-size: 50pt;
+  line-height: 8rem;
   font-family: 'cmunobi';
   text-align: center;
-  top: 28rem;
+  top: 0.5rem;
   left: 2rem;
  color: #000000;
  z-index: 1;
 }
-.w-1{
-  left: 1rem;
-}
-.w-2{
-  word-spacing: -.2ch;
-}
+
 body.dark-mode .header {
   position: absolute;
   font-family:'cmunobi';
@@ -226,6 +206,8 @@ a, em, i {
 }
 
 .dark-mode-toggle {
+  opacity: 1 !important;
+  visibility: visible !important;
   position: fixed;
   bottom: 5rem;
  left: 1rem;
@@ -467,13 +449,15 @@ margin-bottom: 5rem;
     padding: 0;
   }
   
-.image-container {
-  position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    padding: 0;
-   margin: 0;
+
+  .image-container {
+    position: relative; /* Ensures child absolute elements are positioned within */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh; /* Adjust as needed */
+    overflow: hidden; /* Prevents unwanted scrolling */
   }
   
 .text-container {
@@ -497,7 +481,7 @@ p{
 .subheader> h2{
   font-size: 18pt;
   text-align: center;
-  padding-top: 4rem;
+  padding-top: 3rem;
 }
   body.dark-mode .owca_mobile_dark{
   display: block;
@@ -517,29 +501,28 @@ p{
       display: none;
       }
 
-.header{
-  font-size: 50pt;
-  position: absolute;
-  text-align: center;
-  margin-top: -11rem;
-  mix-blend-mode: difference;
-  margin-right: 1rem;
-  line-height: 4.5rem;
-  color: #fffce1;
 
+
+.header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap; /* Prevents text from wrapping */
+  font-size: 20pt;
+ text-align: left;
+  mix-blend-mode: normal;
+  line-height: 4.5rem;
+  color: #000000;
+  overflow: visible;
 }
+
 body.middle-mode .header{
   text-align: center;
-  margin-top: -11rem;
-  mix-blend-mode: difference;
-  margin-right: 1rem;
   line-height: 4.5rem;
   color: #fffcdd;
 }
 body.dark-mode .header{
-  text-align: center;
-  margin-top: -11rem;
-  mix-blend-mode: difference;
   margin-right: 1rem;
   line-height: 4.5rem;
   color: #ffffff;
@@ -640,7 +623,7 @@ body.dark-mode .header{
 }
 
 .bottom-nav {
-  position: fixed;/* Keeps the navbar fixed at the bottom */
+  position: sticky;/* Keeps the navbar fixed at the bottom */
   overflow: auto;
   bottom: 0; /* Aligns it at the bottom of the viewport */
   left: 0; /* Ensures it starts from the left of the viewport */
@@ -664,12 +647,17 @@ body.dark-mode .header{
   scrollbar-width: none;  /* Hide scrollbar in Firefox */
   transition: top 0.5s ease-in-out; /* Smooth transition */
 }
-
 .bottom-nav.sticky {
-  top: 0; /* Stick to the top of the page */
-  bottom: unset; /* Remove bottom positioning */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 1); /* Stronger visibility */
 }
 
+.bottom-nav.hidden {
+  display: block !important; /* Ensure it's never hidden */
+}
 /* Styling for bottom-nav items */
 .bottom-nav ul {
   list-style: none;
